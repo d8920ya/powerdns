@@ -1,0 +1,17 @@
+FROM centos
+
+RUN yum -y install epel-release \
+	&& yum -y update \
+	&& yum -y install pdns-backend-mysql pdns \
+	nmap bind-utils net-tools rsyslog
+
+EXPOSE 5300/tcp 5300/udp
+
+CMD ["sh", "-c", "pdns_server --daemon=yes ; tail -f /dev/null"]
+
+#FROM ubuntu
+#RUN apt-get -y update
+#RUN apt-get install -y pdns-backend-mysql pdns-server
+#RUN systemctl enable pdns
+#RUN /etc/init.d/pdns start
+#EXPOSE 5300

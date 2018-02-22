@@ -1,0 +1,17 @@
+FROM centos
+
+RUN yum -y install epel-release \
+	&& yum -y update \
+	&& yum -y install pdns-recursor \
+	nmap bind-utils net-tools rsyslog
+
+EXPOSE 5302/tcp 5302/udp
+
+CMD ["sh", "-c", "pdns_recursor --daemon=yes ; tail -f /dev/null"]
+
+#FROM ubuntu
+#RUN apt-get -y update
+#RUN apt-get install -y pdns-recursor
+#RUN systemctl enable pdns-recursor
+#RUN /etc/init.d/pdns-recursor start
+#EXPOSE 5302
