@@ -1,11 +1,11 @@
-version : '3'
+version : '2'
 services:
   auth:
     image: d8920ya/pdns_auth
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: on-failure
+    #deploy:
+    #  replicas: 2
+    #  restart_policy:
+    #    condition: on-failure
     volumes:
       - ./Config/rsyslogd.conf:/etc/rsyslogd.conf
       - ./Config/pdns.conf:/etc/pdns/pdns.conf
@@ -19,10 +19,10 @@ services:
 
   dnsdist:
     image: d8920ya/pdns_dnsdist
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: on-failure
+    #deploy:
+    #  replicas: 2
+    #  restart_policy:
+    #    condition: on-failure
     volumes:
       - ./Config/rsyslogd.conf:/etc/rsyslogd.conf
       - ./Config/dnsdist.conf:/etc/dnsdist/dnsdist.conf
@@ -37,10 +37,10 @@ services:
 
   recursor:
     image: d8920ya/pdns_recursor
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: on-failure
+    #deploy:
+    #  replicas: 2
+    #  restart_policy:
+    #    condition: on-failure
     volumes:
       - ./Config/rsyslogd.conf:/etc/rsyslogd.conf
       - ./Config/recursor.conf:/etc/pdns-recursor/recursor.conf
@@ -59,4 +59,4 @@ networks:
     ipam:
      config:
        - subnet: "172.18.0.0/24"
-#         gateway: "172.18.0.1"
+         gateway: "172.18.0.1"
