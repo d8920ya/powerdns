@@ -1,7 +1,7 @@
 version : '2'
 services:
   auth:
-    image: d8920ya/pdns_auth
+    image: d8920ya/pdns-auth:1.0
     #deploy:
     #  replicas: 2
     #  restart_policy:
@@ -18,7 +18,7 @@ services:
         ipv4_address: "172.18.0.100"
 
   dnsdist:
-    image: d8920ya/pdns_dnsdist
+    image: d8920ya/pdns-dnsdist:1.0
     #deploy:
     #  replicas: 2
     #  restart_policy:
@@ -36,7 +36,7 @@ services:
         ipv4_address: "172.18.0.101"
 
   recursor:
-    image: d8920ya/pdns_recursor
+    image: d8920ya/pdns-recursor:1.0
     #deploy:
     #  replicas: 2
     #  restart_policy:
